@@ -1,0 +1,57 @@
+{
+  "_from": "git+https://github.com/achubutkin/cordova-plugin-stepper.git",
+  "_id": "cordova-plugin-stepper@0.1.4",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/cordova-plugin-stepper",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/achubutkin/cordova-plugin-stepper",
+    "rawSpec": "https://github.com/achubutkin/cordova-plugin-stepper",
+    "saveSpec": "git+https://github.com/achubutkin/cordova-plugin-stepper.git",
+    "fetchSpec": "https://github.com/achubutkin/cordova-plugin-stepper.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/achubutkin/cordova-plugin-stepper.git#67793893838dc0509cf538849e20815f6e5406bc",
+  "_spec": "https://github.com/achubutkin/cordova-plugin-stepper",
+  "_where": "/home/m/project/sgx-event-app-geolt/sgx-event-app/cordova",
+  "author": {
+    "name": "Alexandr Chubutkin"
+  },
+  "bugs": {
+    "url": "https://github.com/achubutkin/cordova-plugin-stepper/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-stepper",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "Lightweight pedometer Cordova/Phonegap plugin for Android using the hardware step sensor, with notifications.",
+  "homepage": "https://github.com/achubutkin/cordova-plugin-stepper#readme",
+  "keywords": [
+    "cordova",
+    "phonegap",
+    "pedometer",
+    "steps",
+    "distance",
+    "fitness",
+    "cordova-android",
+    "distance"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-stepper",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/achubutkin/cordova-plugin-stepper.git"
+  },
+  "version": "0.1.4"
+}
