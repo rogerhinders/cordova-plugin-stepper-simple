@@ -51,7 +51,7 @@ public class PedoListener extends CordovaPlugin implements SensorEventListener {
   public static String PEDOMETER_YOUR_PROGRESS_FORMAT_TEXT = "pedometerYourProgressFormatText";
   public static String PEDOMETER_GOAL_REACHED_FORMAT_TEXT = "pedometerGoalReachedFormatText";
 
-  private int status;
+  private int status = STOPPED;
 
   private int startOffset = 0, todayOffset, total_start, goal, since_boot, total_days;
   public final static NumberFormat formatter = NumberFormat.getInstance(Locale.getDefault());
@@ -193,14 +193,26 @@ public class PedoListener extends CordovaPlugin implements SensorEventListener {
   }
 
   public void onStart() {
-    initSensor();
+    //initSensor();
   }
 
   public void onPause(boolean multitasking) {
+    if(status == PedoListener.STOPPED) {
+      return;
+    }
+
+    Log.d("STEPPER", "IS PAUSING! "+status);
     status = PedoListener.PAUSED;
     uninitSensor();
   }
-
+/*
+  @Override
+  public void onResume(boolean multitasking) {
+    Log.d("STEPPER", "IS RESUMING!");
+    status = PedoListener.STOPPED;
+    initSensor();
+  }
+*/
   /**
    * Called by the Broker when listener is to be shut down.
    * Stop listener.
@@ -223,7 +235,7 @@ public class PedoListener extends CordovaPlugin implements SensorEventListener {
 
     // If already starting or running, then return
     if ((status == PedoListener.RUNNING) || (status == PedoListener.STARTING)) {
-      Log.d("STEPPER", "Stepper is already running!");
+      Log.d("STEPPER", "Stepper is already running! "+status);
       return;
     }
 
@@ -264,9 +276,11 @@ public class PedoListener extends CordovaPlugin implements SensorEventListener {
   }
 
   private void stop() {
-    Log.d("STEPPER", "Stopping stepper.");
+    Log.d("STEPPER", "Stopping stepper. TEST");
     if (status != PedoListener.STOPPED) {
+      Log.d("STEPPER", "START UNINIT");
       uninitSensor();
+      Log.d("STEPPER", "END UNINIT");
     }
 
     Database db = Database.getInstance(getActivity());
@@ -274,6 +288,7 @@ public class PedoListener extends CordovaPlugin implements SensorEventListener {
     db.close();
 
     getActivity().stopService(new Intent(getActivity(), SensorListener.class));
+    Log.d("STEPPER", "PedoListener stopped!");
     status = PedoListener.STOPPED;
 
     callbackContext.success();
@@ -328,6 +343,7 @@ public class PedoListener extends CordovaPlugin implements SensorEventListener {
 
     db.close();
 
+    Log.d("STEPPER", "STATUS: STARTING");
     status = PedoListener.STARTING;
 
     updateUI();

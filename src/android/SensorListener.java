@@ -120,6 +120,12 @@ public class SensorListener extends Service implements SensorEventListener {
     return null;
   }
 
+  /*@Override
+  protected void onStop() {
+    unregisterReceiver(shutdownReceiver);
+    super.onStop();
+  }*/
+
   @Override
   public int onStartCommand(final Intent intent, int flags, int startId) {
     reRegisterSensor();
@@ -170,6 +176,7 @@ public class SensorListener extends Service implements SensorEventListener {
 
   @Override
   public void onDestroy() {
+    unregisterReceiver(shutdownReceiver);
     super.onDestroy();
     try {
       SensorManager sm = (SensorManager) getSystemService(SENSOR_SERVICE);
