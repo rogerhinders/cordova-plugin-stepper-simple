@@ -214,10 +214,11 @@ public class SensorListener extends Service implements SensorEventListener {
       */
 
       //notificationBuilder.setProgress(goal, today_offset + steps, false).setContentText(String.format("Steps: %d", steps));
-      notificationBuilder.setContentText(String.format("Steps: %d", steps));
+      //notificationBuilder.setContentText(String.format("Steps: %d", steps));
+      notificationBuilder.setContentText("Pedometer is running");
 
     } else { // still no step value?
-      notificationBuilder.setContentText(prefs.getString(PedoListener.PEDOMETER_YOUR_PROGRESS_FORMAT_TEXT, "Your progress will be shown here soon"));
+      notificationBuilder.setContentText(prefs.getString(PedoListener.PEDOMETER_YOUR_PROGRESS_FORMAT_TEXT, "Pedometer is running"));
     }
 
     PackageManager packageManager = context.getPackageManager();
